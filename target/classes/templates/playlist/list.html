@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spotmusic</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,
+     user-scalable=no"/>
+
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Spotmusic</h1>
+    </div>
+
+    <div>
+        <a class="btn btn-primary">Nova playlist</a>
+    </div>
+    <hr/>
+
+    <div th:if="${playlists != null}">
+        <h4>
+            Playlists
+        </h4>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Ação</th>
+            </tr>
+            </thead>
+            <tr th:each="playlist : ${playlists}">
+                <td >
+                    <a th:text="${playlist.nome}">nome</a>
+                </td>
+                <td th:text="${playlist.descricao}">descricao</td>
+                <td>
+                    <a class="btn btn-sm btn-info">Editar</a>
+                    <a class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${#lists.isEmpty(playlists)}">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 playlists cadastradas!
+        </div>
+    </div>
+    <hr/>
+
+    <a class="btn btn-light" href="/home">Voltar</a>
+    <hr/>
+
+    <footer class="footer">
+        <p>© 2018 DevMedia</p>
+    </footer>
+</div>
+</body>
+</html>
