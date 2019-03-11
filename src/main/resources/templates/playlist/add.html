@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spotmusic</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,
+     user-scalable=no"/>
+
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Spotmusic</h1>
+    </div>
+
+    <h4>
+        Nova playlist
+    </h4>
+
+    <form th:action="@{/playlists/salvar}" th:method="post" th:object="${playlist}">
+        <div class="row">
+            <input id="id" type="hidden" th:field="*{id}"/>
+            <div class="form-group col-md-4">
+                <label for="nome">Nome:</label>
+                <input class="form-control" id="nome"
+                       type="text" th:field="*{nome}"/>
+                <div th:if="${#fields.hasErrors('nome')}"
+                     th:errors="*{nome}"></div>
+            </div>
+
+            <div class="form-group col-md-8">
+                <label for="descricao">Descrição:</label>
+                <input class="form-control" id="descricao" type="text"
+                       th:field="*{descricao}"/>
+                <div th:if="${#fields.hasErrors('descricao')}"
+                     th:errors="*{descricao}"></div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary"
+                    type="submit">Salvar</button>
+        </div>
+
+    </form>
+
+    <hr/>
+
+    <a class="btn btn-light"
+       th:href="@{/playlists/listar}">Voltar</a>
+
+    <hr/>
+    <footer class="footer">
+        <p>© 2018 DevMedia</p>
+    </footer>
+
+</div>
+</body>
+</html>
