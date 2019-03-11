@@ -45,7 +45,7 @@
             </thead>
             <tr th:each="playlist : ${playlists}">
                 <td >
-                    <a th:text="${playlist.nome}">nome</a>
+                    <a th:text="${playlist.nome}" th:href="@{/playlists/{id}/musicas/listar(id=${playlist.id})}">nome</a>
                 </td>
                 <td th:text="${playlist.descricao}">descricao</td>
                 <td>

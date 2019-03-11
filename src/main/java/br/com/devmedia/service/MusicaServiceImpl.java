@@ -3,10 +3,12 @@ package br.com.devmedia.service;
 import br.com.devmedia.dao.MusicaDao;
 import br.com.devmedia.domain.Musica;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-
+@Service
+@Transactional
 public class MusicaServiceImpl implements MusicaService {
     @Autowired
     private MusicaDao musicaDao;
