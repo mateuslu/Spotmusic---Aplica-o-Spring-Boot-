@@ -22,7 +22,7 @@
         Nova playlist
     </h4>
 
-    <form th:action="@{/playlists/salvar}" th:method="post" th:object="${playlist}">
+    <form th:action="@{/playlists/salvar}" th:method="${playlist.id} == 0 ? post : put" th:object="${playlist}">
         <div class="row">
             <input id="id" type="hidden" th:field="*{id}"/>
             <div class="form-group col-md-4">
